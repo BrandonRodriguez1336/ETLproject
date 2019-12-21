@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gender Wage Gap</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body style="background-color: burlywood;">
+    <div class="container" style="background-color: bisque;">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center; font-family: cursive;">
+                <h1>Explore the Data</h1>
+                <h3>Enter a field to see median earnings by men and women as well as the pay gap for that field.</h3><br>
+                <form action="http://127.0.0.1:5000/search" method="POST">
+                    <input type="text" name="Occupation" placeholder="Search here..." size="20" />
+                    <input type="submit" value="Submit">
+                </form>
+                {% for gender in gender %}    
+                Result:<br> 
+                   Field Name : <strong>{{gender.Occupational_Category}}</strong> <br>
+                   Median earnings men : <strong>{{gender.Median_Earnings_In_Dollars_Men_Estimate}}</strong>  <br>
+                   Median earnings women : <strong>{{gender.Median_Earnings_In_Dollars_Women_Estimate}}</strong> <br>
+                   Women's earnings as a percentage of men's earnings: <strong>{{gender.Womens_Earnings_As_A_Percentage_of_Mens_Earnings_Estimate}}</strong>   <br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
